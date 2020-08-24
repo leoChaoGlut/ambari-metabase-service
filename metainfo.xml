@@ -41,7 +41,7 @@
             </components>
 
             <configuration-dependencies>
-                <config-type>metabase..xml</config-type>
+                <config-type>metabase.properties.xml</config-type>
             </configuration-dependencies>
 
         </service>

@@ -18,7 +18,7 @@ from resource_management.libraries.script.script import Script
 # config object that holds the configurations declared in the config xml file
 config = Script.get_config()
 
-metabaseConfig = config['configurations']['metabase']
+metabaseConfig = config['configurations']['metabase.properties']
 
 host_info = config['clusterHostInfo']
 host_level_params = config['hostLevelParams']

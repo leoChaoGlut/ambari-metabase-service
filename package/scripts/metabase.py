@@ -21,14 +21,14 @@ from resource_management.libraries.script.script import Script
 class Metabase(Script):
     def install(self, env):
         Execute('mkdir -p {0}'.format(metabaseHome))
-        Execute('wget --no-check-certificate {0} -O {1}'.format(metabaseJarUrl, metabaseHome))
+        Execute('cd {0} && wget {1} '.format(metabaseHome, metabaseJarUrl))
 
     def stop(self, env):
         Execute("ps -ef |grep -v grep | grep '" + startCmd + "'|awk '{print $2}' |xargs kill -9 ")
 
     def start(self, env):
         exports = self.configure(env)
-        Execute(exports + ' && java -jar metabase.jar')
+        Execute(exports + ' && cd {0} && nohup java -jar metabase.jar &'.format(metabaseHome))
 
     def status(self, env):
         try:
