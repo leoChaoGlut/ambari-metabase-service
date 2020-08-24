@@ -53,37 +53,8 @@
         <name>MB_DB_CONNECTION_URI</name>
         <value></value>
         <description>
-            postgres://dbuser:dbpassword@db.example.com:port/mydb?ssl=true&
-            sslfactory=org.postgresql.ssl.NonValidatingFactory
+            postgres://dbuser:dbpassword@db.example.com:port/mydb?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory
         </description>
     </property>
 
-    <property>
-        <name>MB_EMAIL_FROM_ADDRESS</name>
-        <value></value>
-    </property>
-    <property>
-        <name>MB_EMAIL_SMTP_HOST</name>
-        <value></value>
-    </property>
-    <property>
-        <name>MB_EMAIL_SMTP_USERNAME</name>
-        <value></value>
-    </property>
-    <property>
-        <name>MB_EMAIL_SMTP_PASSWORD</name>
-        <value></value>
-    </property>
-    <property>
-        <name>MB_EMAIL_SMTP_PORT</name>
-        <value>25</value>
-    </property>
-    <property>
-        <name>MB_EMAIL_SMTP_SECURITY</name>
-        <value></value>
-        <description>
-            Type: string ("tls", "ssl", "starttls", "none")
-            Default: "none"
-        </description>
-    </property>
 </configuration>

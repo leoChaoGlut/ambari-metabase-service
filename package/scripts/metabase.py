@@ -33,7 +33,7 @@ class Metabase(Script):
     def status(self, env):
         try:
             Execute(
-                'export AZ_CNT=`ps -ef |grep -v grep |grep ' + startCmd + ' | wc -l` && `if [ $AZ_CNT -ne 0 ];then exit 0;else exit 3;fi `'
+                'export AZ_CNT=`ps -ef |grep -v grep |grep "' + startCmd + '" | wc -l` && `if [ $AZ_CNT -ne 0 ];then exit 0;else exit 3;fi `'
             )
         except ExecutionFailed as ef:
             if ef.code == 3:
@@ -43,7 +43,7 @@ class Metabase(Script):
 
     def configure(self, env):
         from params import metabaseConfig
-        exports = ' EXPORT '
+        exports = ' export '
         for key, value in metabaseConfig.iteritems():
             exports += key + "=" + value + " "
         return exports
