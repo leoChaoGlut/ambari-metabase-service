@@ -28,12 +28,12 @@ class Metabase(Script):
 
     def start(self, env):
         exports = self.configure(env)
-        Execute(exports + ' && cd {0} && nohup java -jar metabase.jar &'.format(metabaseHome))
+        Execute(exports + ' && cd {0} && nohup {1} &'.format(metabaseHome, startCmd))
 
     def status(self, env):
         try:
             Execute(
-                'export AZ_CNT=`ps -ef |grep -v grep |grep "' + startCmd + '" | wc -l` && `if [ $AZ_CNT -ne 0 ];then exit 0;else exit 3;fi `'
+                'export CNT=`ps -ef |grep -v grep |grep "' + startCmd + '" | wc -l` && `if [ $CNT -ne 0 ];then exit 0;else exit 3;fi `'
             )
         except ExecutionFailed as ef:
             if ef.code == 3:

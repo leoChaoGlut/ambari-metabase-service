@@ -23,4 +23,4 @@ metabaseHome = '/data/metabase'
 
 metabaseJarUrl = config.get('download', 'metabase_jar_url')
 
-startCmd = " java -jar metabase.jar "
+startCmd = "java -jar metabase.jar"
