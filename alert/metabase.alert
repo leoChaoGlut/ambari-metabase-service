@@ -22,7 +22,7 @@ curl -u ${username}:${password} -H "X-Requested-By: ambari" -X POST http://${amb
         }
       },
       "type": "PORT",
-      "uri": "{{metabase/MB_JETTY_PORT}}"
+      "uri": "{{metabase.properties/MB_JETTY_PORT}}"
     }
   }
 }'
