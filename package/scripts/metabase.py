@@ -28,7 +28,7 @@ class Metabase(Script):
 
     def start(self, env):
         exports = self.configure(env)
-        Execute(exports + ' && cd {0} && nohup {1} &'.format(metabaseHome, startCmd))
+        Execute(exports + ' && cd {0} && nohup {1} > metabase.out 2>&1 &'.format(metabaseHome, startCmd))
 
     def status(self, env):
         try:
