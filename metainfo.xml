@@ -31,6 +31,7 @@
                     <category>MASTER</category>
                     <cardinality>1+</cardinality>
                     <versionAdvertised>true</versionAdvertised>
+                    <recovery_enabled>true</recovery_enabled>
                     <commandScript>
                         <script>scripts/metabase.py</script>
                         <scriptType>PYTHON</scriptType>
