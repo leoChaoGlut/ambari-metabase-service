@@ -33,6 +33,7 @@ class Metabase(Script):
         Execute('cd {0} && nohup {1} > out.metabase 2>&1 & '.format(metabaseHome, startCmd))
 
     def status(self, env):
+        # TODO 通过api获取health更好
         try:
             Execute(
                 'export CNT=`ps -ef |grep -v grep |grep "jar metabase.jar" | wc -l` && `if [ $CNT -ne 0 ];then exit '
