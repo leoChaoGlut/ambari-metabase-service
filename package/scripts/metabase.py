@@ -25,17 +25,17 @@ class Metabase(Script):
         Execute('cd {0} && wget {1} '.format(metabaseHome, metabaseJarUrl))
 
     def stop(self, env):
-        Execute("ps -ef |grep -v grep | grep '-jar metabase.jar'|awk '{print $2}' |xargs kill -9 ")
+        Execute("ps -ef |grep -v grep | grep 'jar metabase.jar'|awk '{print $2}' |xargs kill -9 ")
 
     def start(self, env):
         jvmArgs = self.configure(env)
         startCmd = startCmdTmpl.format(jvmArgs)
-        Execute('cd {0} && nohup {1} > out.metabase 2>&1 &'.format(metabaseHome, startCmd))
+        Execute('cd {0} && nohup {1} > out.metabase 2>&1 & '.format(metabaseHome, startCmd))
 
     def status(self, env):
         try:
             Execute(
-                'export CNT=`ps -ef |grep -v grep |grep "-jar metabase.jar" | wc -l` && `if [ $CNT -ne 0 ];then exit '
+                'export CNT=`ps -ef |grep -v grep |grep "jar metabase.jar" | wc -l` && `if [ $CNT -ne 0 ];then exit '
                 '0;else exit 3;fi ` '
             )
         except ExecutionFailed as ef:
