@@ -53,8 +53,7 @@
         <name>MB_DB_CONNECTION_URI</name>
         <value></value>
         <description>
-            jdbc:postgresql://db.example.com:port/mydb?user=dbuser&password=dbpassword&ssl=true&
-            sslfactory=org.postgresql.ssl.NonValidatingFactory
+            jdbc:postgresql://db.example.com:port/mydb?user=dbuser&amp;password=dbpassword&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory
         </description>
     </property>
 

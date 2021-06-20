@@ -11,9 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import os
-
 import ConfigParser
+import os
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 config = ConfigParser.ConfigParser()
@@ -23,4 +22,4 @@ metabaseHome = '/data/metabase'
 
 metabaseJarUrl = config.get('download', 'metabase_jar_url')
 
-startCmd = "java -jar metabase.jar"
+startCmdTmpl = "java {0} -jar metabase.jar"

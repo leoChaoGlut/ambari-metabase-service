@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from common import metabaseHome, metabaseJarUrl, startCmd
 from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
 from resource_management.core.resources.system import Execute
 from resource_management.libraries.script.script import Script
+
+from common import metabaseHome, metabaseJarUrl, startCmdTmpl
 
 
 class Metabase(Script):
@@ -24,16 +25,18 @@ class Metabase(Script):
         Execute('cd {0} && wget {1} '.format(metabaseHome, metabaseJarUrl))
 
     def stop(self, env):
-        Execute("ps -ef |grep -v grep | grep '" + startCmd + "'|awk '{print $2}' |xargs kill -9 ")
+        Execute("ps -ef |grep -v grep | grep '-jar metabase.jar'|awk '{print $2}' |xargs kill -9 ")
 
     def start(self, env):
-        exports = self.configure(env)
-        Execute(exports + ' && cd {0} && nohup {1} > metabase.out 2>&1 &'.format(metabaseHome, startCmd))
+        jvmArgs = self.configure(env)
+        startCmd = startCmdTmpl.format(jvmArgs)
+        Execute('cd {0} && nohup {1} > out.metabase 2>&1 &'.format(metabaseHome, startCmd))
 
     def status(self, env):
         try:
             Execute(
-                'export CNT=`ps -ef |grep -v grep |grep "' + startCmd + '" | wc -l` && `if [ $CNT -ne 0 ];then exit 0;else exit 3;fi `'
+                'export CNT=`ps -ef |grep -v grep |grep "-jar metabase.jar" | wc -l` && `if [ $CNT -ne 0 ];then exit '
+                '0;else exit 3;fi ` '
             )
         except ExecutionFailed as ef:
             if ef.code == 3:
@@ -43,10 +46,10 @@ class Metabase(Script):
 
     def configure(self, env):
         from params import metabaseConfig
-        exports = ' export '
+        jvmArgs = ' '
         for key, value in metabaseConfig.iteritems():
-            exports += key + "=" + value + " "
-        return exports
+            jvmArgs += '-D' + key + '="' + value + '" '
+        return jvmArgs
 
 
 if __name__ == '__main__':

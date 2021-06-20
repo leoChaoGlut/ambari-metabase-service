@@ -23,7 +23,7 @@
             <comment>environment-variables:
                 https://www.metabase.com/docs/latest/operations-guide/environment-variables.html
             </comment>
-            <version>0.36.4</version>
+            <version>0.39.4</version>
             <components>
                 <component>
                     <name>METABASE</name>
@@ -35,7 +35,7 @@
                     <commandScript>
                         <script>scripts/metabase.py</script>
                         <scriptType>PYTHON</scriptType>
-                        <timeout>300</timeout>
+                        <timeout>60</timeout>
                     </commandScript>
                 </component>
 
