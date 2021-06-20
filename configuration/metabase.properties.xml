@@ -26,7 +26,7 @@
     </property>
     <property>
         <name>MB_PASSWORD_COMPLEXITY</name>
-        <value>weak</value>
+        <value>normal</value>
         <description>
             Type: string ("weak", "normal", "strong")
         </description>
@@ -53,7 +53,8 @@
         <name>MB_DB_CONNECTION_URI</name>
         <value></value>
         <description>
-            postgres://dbuser:dbpassword@db.example.com:port/mydb?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory
+            jdbc:postgresql://db.example.com:port/mydb?user=dbuser&password=dbpassword&ssl=true&
+            sslfactory=org.postgresql.ssl.NonValidatingFactory
         </description>
     </property>
 
